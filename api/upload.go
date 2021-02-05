@@ -3,7 +3,7 @@ package main
 import (
 	//"encoding/json"
 	"fmt"
-	fb "github.com/huandu/facebook/v2"
+	fb "github.com/huandu/facebook"
 	//"golang.org/x/oauth2"
 	//oauth2fb "golang.org/x/oauth2/facebook"
 	"io/ioutil"

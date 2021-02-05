@@ -1,0 +1,13 @@
+{
+
+
+    "routes": [
+        {
+          "src": "/",
+          "dest": "https://start.medienwerk.now.sh"
+        }
+      ],
+
+    "alias": "shop2go.dev"
+    }
+
