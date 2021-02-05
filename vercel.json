@@ -1,7 +1,15 @@
 {
   "version": 2,
-    "routes": [
-        {
+  "builds": [
+    {
+      "src": "upload.go",
+      "use": "@vercel/go"
+
+    },
+    {
+    "routes": [{
+
+
           "src": "/",
           "dest": "https://start.medienwerk.now.sh"
         }
