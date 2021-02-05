@@ -3,7 +3,10 @@ package main
 import (
 	//"encoding/json"
 	"fmt"
+	"os"
+
 	fb "github.com/huandu/facebook"
+
 	//"golang.org/x/oauth2"
 	//oauth2fb "golang.org/x/oauth2/facebook"
 	"io/ioutil"
@@ -88,7 +91,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 		// If there is another way to get decoded access token,
 		// this will return a session created directly from the token.
-		session := globalApp.Session("EAADkrdbvqzsBAIBZBMJ20mdfuqZBKzRRi1xzF5bV9dGxtA4dhp5Wr0AwpRg1ZBQCPQZAcXK0tLWqgwXrWaobVgnV01OO4T6vN8VRnP7Ig5gJBOb4KCtQZCctZBZBZAifxmmM4OuNugZBKekqn6zvvLIWj6ZA85AyeZAnuhsESo0fcZAsGkuZBRhoGHa9XkEHqj55AGMkZD")
+		session := globalApp.Session(os.Getenv(("FB_TOKEN")))
 
 		// This validates the access token by ensuring that the current user ID is properly returned. err is nil if the token is valid.
 		err = session.Validate()
