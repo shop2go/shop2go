@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "./upload/index.go", "use": "@now/go" }
+  ],
+
+  "routes": [
+    {
+      "src": "/",
+      "dest": "https://start.medienwerk.now.sh"
+    }
+  ],
+
+  "alias": "shop2go.cloud"
+}
