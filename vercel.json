@@ -1,21 +1,19 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "upload.go",
-      "use": "@vercel/go"
+    "builds": [
 
-    },
-    {
-    "routes": [{
+      {"src": "./upload/index.go", "use": "@now/go"}
 
+    ],
 
+    "routes": [
+        {
           "src": "/",
           "dest": "https://start.medienwerk.now.sh"
         }
       ],
 
-    "alias": "shop2go.dev",
+    "alias": "code2go.dev",
 
     "env": {
       "FB_TOKEN": "@fbt"
