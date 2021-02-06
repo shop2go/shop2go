@@ -59,7 +59,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "File Size: %+v\n", handler.Size)
 		fmt.Fprintf(w, "MIME Header: %+v\n", handler.Header)
 
-		tempFile, err := ioutil.TempFile("./", "*."+handler.Filename)
+		tempFile, err := ioutil.TempFile("", "*."+handler.Filename)
 		if err != nil {
 			fmt.Fprint(w, err)
 		}
