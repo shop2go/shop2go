@@ -28,7 +28,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>upload</title>
+    <title>upload img</title>
   </head>
   <body>
     <form
