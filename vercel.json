@@ -1,7 +1,7 @@
 {
   "version": 2,
 
-    "redirects": [
+    "rewrites": [
         {
           "source": "/",
           "destination": "https://start.medienwerk.now.sh"
