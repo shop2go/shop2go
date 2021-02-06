@@ -3,7 +3,7 @@ package handler
 import (
 	//"encoding/json"
 	"fmt"
-	"os"
+	//"os"
 
 	//fb "github.com/huandu/facebook"
 
@@ -28,7 +28,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Document</title>
+    <title>upload</title>
   </head>
   <body>
     <form
@@ -59,15 +59,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "File Size: %+v\n", handler.Size)
 		fmt.Fprintf(w, "MIME Header: %+v\n", handler.Header)
 
-		path, err := os.Getwd()
-
-		if err != nil {
-			fmt.Fprint(w, err)
-		}
-
-		fmt.Fprint(w, path)
-
-		tempFile, err := ioutil.TempFile(path, "*."+handler.Filename)
+		tempFile, err := ioutil.TempFile("https://shop2go.cloud/api", "*."+handler.Filename)
 		if err != nil {
 			fmt.Fprint(w, err)
 		}
