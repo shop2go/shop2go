@@ -57,17 +57,20 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprint(w, err)
 		}
 
-		defer file.Close()
-
 		fmt.Fprintf(w, "Uploaded File: %+v\n", handler.Filename)
 		fmt.Fprintf(w, "File Size: %+v\n", handler.Size)
 		fmt.Fprintf(w, "MIME Header: %+v\n", handler.Header)
 
 		reader := bufio.NewReader(file)
+
+		file.Close()
+
 		content, err := ioutil.ReadAll(reader)
 
 		if err != nil {
 			fmt.Fprint(w, err)
+		} else if content == nil {
+			fmt.Fprint(w, "ERROR")
 		}
 
 		time.Sleep(5e9)
