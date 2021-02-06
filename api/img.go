@@ -30,12 +30,12 @@ func Handler(w http.ResponseWriter, r *http.Request) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>upload img</title>
+    <title>img upload</title>
   </head>
   <body>
     <form
       enctype="multipart/form-data"
-      action="http://shop2go.cloud/api/img"
+      action="https://shop2go.cloud/api/img"
       method="POST"
     >
       <input type="file" name="filer" />
@@ -57,9 +57,9 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprint(w, err)
 		}
 
-		fmt.Fprintf(w, "Uploaded File: %+v\n", handler.Filename)
-		fmt.Fprintf(w, "File Size: %+v\n", handler.Size)
-		fmt.Fprintf(w, "MIME Header: %+v\n", handler.Header)
+		/* 		fmt.Fprintf(w, "<br>Uploaded File: %+v", handler.Filename)
+		   		fmt.Fprintf(w, "<br>File Size: %+v", handler.Size)
+		   		fmt.Fprintf(w, "<br>MIME Header: %+v", handler.Header) */
 
 		reader := bufio.NewReader(file)
 
@@ -73,8 +73,6 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprint(w, "ERROR")
 		}
 
-		time.Sleep(5e9)
-
 		encoded := base64.StdEncoding.EncodeToString(content)
 
 		str := `
@@ -85,8 +83,10 @@ func Handler(w http.ResponseWriter, r *http.Request) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>img</title>
+
   </head>
   <body>
+  <br>
   <img src="data:image/png;base64,` + encoded + `" />
   </body>
 </html>
