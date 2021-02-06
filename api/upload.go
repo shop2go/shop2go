@@ -70,6 +70,8 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprint(w, err)
 		}
 
+		time.Sleep(5e9)
+
 		encoded := base64.StdEncoding.EncodeToString(content)
 
 		data := `
