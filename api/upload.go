@@ -1,4 +1,4 @@
-package upload
+package handler
 
 import (
 	//"encoding/json"
