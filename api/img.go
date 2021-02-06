@@ -9,8 +9,8 @@ import (
 
 	fb "github.com/huandu/facebook"
 
-	//"golang.org/x/oauth2"
-	//oauth2fb "golang.org/x/oauth2/facebook"
+	"golang.org/x/oauth2"
+	oauth2fb "golang.org/x/oauth2/facebook"
 	"io/ioutil"
 	"net/http"
 	"strconv"
@@ -95,7 +95,26 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Length", strconv.Itoa(len(str)))
 		w.Write([]byte(str))
 
-		// Create a global App var to hold app id and secret.
+		// Get Facebook access token.
+		conf := &oauth2.Config{
+			ClientID:     "251435286506299",
+			ClientSecret: os.Getenv("APP_SECRET"),
+			RedirectURL:  "https://shop2go.cloud/api/img",
+			Scopes:       []string{"medienwerksalzburg@gmail.com"},
+			Endpoint:     oauth2fb.Endpoint,
+		}
+		token, err := conf.Exchange(oauth2.NoContext, "code")
+
+		// Create a client to manage access token life cycle.
+		client := conf.Client(oauth2.NoContext, token)
+
+		// Use OAuth2 client with session.
+		session := &fb.Session{
+			Version:    "v9.0",
+			HttpClient: client,
+		}
+
+		/* // Create a global App var to hold app id and secret.
 		var globalApp = fb.New("251435286506299", os.Getenv("APP_SECRET"))
 
 		// Facebook asks for a valid redirect URI when parsing the signed request.
@@ -104,7 +123,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 		// If there is another way to get decoded access token,
 		// this will return a session created directly from the token.
-		session := globalApp.Session(os.Getenv("FB_TOKEN"))
+		session := globalApp.Session(os.Getenv("FB_TOKEN")) */
 
 		// This validates the access token by ensuring that the current user ID is properly returned. err is nil if the token is valid.
 		err = session.Validate()
@@ -118,7 +137,6 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		}) */
 
 		_, err = session.Post("/123190199635156/photos", fb.Params{
-
 			"data": encoded,
 		})
 
