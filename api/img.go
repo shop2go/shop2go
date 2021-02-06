@@ -77,11 +77,24 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 		encoded := base64.StdEncoding.EncodeToString(content)
 
-		data := `
-		<img src="data:image/png;base64,` + encoded + `" />
-		`
+		str := `
+	<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		fmt.Fprint(w, data)
+    <title>img</title>
+  </head>
+  <body>
+  <img src="data:image/png;base64,` + encoded + `" />
+  </body>
+</html>
+`
+
+		w.Header().Set("Content-Type", "text/html")
+		w.Header().Set("Content-Length", strconv.Itoa(len(str)))
+		w.Write([]byte(str))
 
 		/* tempFile, err := ioutil.TempFile("https://shop2go.cloud/api", "*."+handler.Filename)
 		if err != nil {
