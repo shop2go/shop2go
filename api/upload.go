@@ -1,4 +1,4 @@
-package handler
+package main
 
 import (
 	//"encoding/json"
@@ -15,7 +15,7 @@ import (
 	"time"
 )
 
-func Handler(w http.ResponseWriter, r *http.Request) {
+func Upload(w http.ResponseWriter, r *http.Request) {
 
 	switch r.Method {
 
