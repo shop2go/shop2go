@@ -50,7 +50,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	case "POST":
 
-		file, handler, err := r.FormFile("filer")
+		file, _, err := r.FormFile("filer")
 
 		if err != nil {
 			fmt.Fprint(w, err)
