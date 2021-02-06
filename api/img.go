@@ -7,7 +7,7 @@ import (
 	"fmt"
 	//"os"
 
-	//fb "github.com/huandu/facebook"
+	fb "github.com/huandu/facebook"
 
 	//"golang.org/x/oauth2"
 	//oauth2fb "golang.org/x/oauth2/facebook"
@@ -95,35 +95,12 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Length", strconv.Itoa(len(str)))
 		w.Write([]byte(str))
 
-		/* tempFile, err := ioutil.TempFile("https://shop2go.cloud/api", "*."+handler.Filename)
-		if err != nil {
-			fmt.Fprint(w, err)
-		}
-
-		// read all of the contents of our uploaded file into a
-		// byte array
-		fileBytes, err := ioutil.ReadAll(file)
-		if err != nil {
-			fmt.Fprint(w, err)
-		}
-
-		//img := tempFile.Name()
-
-		file.Close()
-
-		// write this byte array to our temporary file
-		tempFile.Write(fileBytes)
-
-		time.Sleep(5e9)
-
-		tempFile.Close() */
-
-		/* // Create a global App var to hold app id and secret.
+		// Create a global App var to hold app id and secret.
 		var globalApp = fb.New("251435286506299", os.Getenv("FBAPP_SECRET"))
 
 		// Facebook asks for a valid redirect URI when parsing the signed request.
 		// It's a newly enforced policy starting as of late 2013.
-		globalApp.RedirectUri = "https://code2go.dev/url/"
+		globalApp.RedirectUri = "https://code2go.dev/"
 
 		// If there is another way to get decoded access token,
 		// this will return a session created directly from the token.
@@ -136,13 +113,13 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		}
 
 		_, err = session.Post("/123190199635156/photos", fb.Params{
-			"caption": "test photo upload",
-			"url":     "https://shop2go.cloud/upload/" + img,
+			"caption": "img upload",
+			"url":     "data:image/png;base64," + encoded,
 		})
 
 		if err != nil {
 			fmt.Fprint(w, err)
-		} */
+		}
 
 		/* resp, err := http.Post("https://graph.facebook.com/{123190199635156}/photos?url={362047903.index.png}&access_token={EAADkrdbvqzsBAIB2glZCJJIeoZBZAHGhe3f0ZBdWRDEiFG2VGXUPV0tBX3L450FsQ9gHeGAQSsga9MUrB6U7EoElq4Pvm5yg5CJl2tpe4PRknO7UjXZAgkOwsCMnRjJgAlwZCSGnkTcUGJMbwJrZArgrhLdEbL3bxZCWCGVxHn6RxQZDZD}", "", nil)
 		if err != nil {
