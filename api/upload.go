@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	fb "github.com/huandu/facebook"
+	//fb "github.com/huandu/facebook"
 
 	//"golang.org/x/oauth2"
 	//oauth2fb "golang.org/x/oauth2/facebook"
@@ -71,7 +71,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprint(w, err)
 		}
 
-		img := tempFile.Name()
+		//img := tempFile.Name()
 
 		file.Close()
 
@@ -82,8 +82,8 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 		tempFile.Close()
 
-		// Create a global App var to hold app id and secret.
-		var globalApp = fb.New("251435286506299", "81c19cfe08f7f880fad161c2280a5e53")
+		/* // Create a global App var to hold app id and secret.
+		var globalApp = fb.New("251435286506299", os.Getenv("FBAPP_SECRET"))
 
 		// Facebook asks for a valid redirect URI when parsing the signed request.
 		// It's a newly enforced policy starting as of late 2013.
@@ -91,7 +91,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 		// If there is another way to get decoded access token,
 		// this will return a session created directly from the token.
-		session := globalApp.Session(os.Getenv(("FB_TOKEN")))
+		session := globalApp.Session(os.Getenv("FB_TOKEN"))
 
 		// This validates the access token by ensuring that the current user ID is properly returned. err is nil if the token is valid.
 		err = session.Validate()
@@ -106,7 +106,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 		if err != nil {
 			fmt.Fprint(w, err)
-		}
+		} */
 
 		/* resp, err := http.Post("https://graph.facebook.com/{123190199635156}/photos?url={362047903.index.png}&access_token={EAADkrdbvqzsBAIB2glZCJJIeoZBZAHGhe3f0ZBdWRDEiFG2VGXUPV0tBX3L450FsQ9gHeGAQSsga9MUrB6U7EoElq4Pvm5yg5CJl2tpe4PRknO7UjXZAgkOwsCMnRjJgAlwZCSGnkTcUGJMbwJrZArgrhLdEbL3bxZCWCGVxHn6RxQZDZD}", "", nil)
 		if err != nil {

@@ -16,6 +16,7 @@
     "alias": "code2go.dev",
 
     "env": {
+      "FBAPP_SECRET": "@fbapp",
       "FB_TOKEN": "@fbt"
       }
     }
