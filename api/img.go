@@ -86,7 +86,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
   </head>
   <body>
   <br>
-  <img src="data:image/png;base64,` + encoded + `" />
+  <img id=image src="data:image/png;base64,` + encoded + `" />
   </body>
 </html>
 `
@@ -114,7 +114,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 		_, err = session.Post("/123190199635156/photos", fb.Params{
 			"caption": "img upload",
-			"url":     "data:image/png;base64," + encoded,
+			"url":     "https://shop2go.cloud/api/img#image",
 		})
 
 		if err != nil {
