@@ -14,7 +14,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"strconv"
-	"time"
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
