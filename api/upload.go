@@ -1,9 +1,9 @@
-package main
+package handler
 
 import (
 	//"encoding/json"
 	"fmt"
-	"os"
+	//"os"
 
 	//fb "github.com/huandu/facebook"
 
