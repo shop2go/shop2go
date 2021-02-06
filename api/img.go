@@ -5,7 +5,7 @@ import (
 	"encoding/base64"
 	//"encoding/json"
 	"fmt"
-	//"os"
+	"os"
 
 	fb "github.com/huandu/facebook"
 
