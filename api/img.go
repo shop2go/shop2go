@@ -96,7 +96,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte(str))
 
 		// Create a global App var to hold app id and secret.
-		var globalApp = fb.New("251435286506299", os.Getenv("FBAPP_SECRET"))
+		var globalApp = fb.New("251435286506299", os.Getenv("APP_SECRET"))
 
 		// Facebook asks for a valid redirect URI when parsing the signed request.
 		// It's a newly enforced policy starting as of late 2013.
