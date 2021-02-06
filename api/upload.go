@@ -15,7 +15,7 @@ import (
 	"time"
 )
 
-func Upload(w http.ResponseWriter, r *http.Request) {
+func Handler(w http.ResponseWriter, r *http.Request) {
 
 	switch r.Method {
 
