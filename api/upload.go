@@ -1,6 +1,8 @@
 package handler
 
 import (
+	"bufio"
+	"encoding/base64"
 	//"encoding/json"
 	"fmt"
 	//"os"
@@ -55,11 +57,28 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprint(w, err)
 		}
 
+		defer file.Close()
+
 		fmt.Fprintf(w, "Uploaded File: %+v\n", handler.Filename)
 		fmt.Fprintf(w, "File Size: %+v\n", handler.Size)
 		fmt.Fprintf(w, "MIME Header: %+v\n", handler.Header)
 
-		tempFile, err := ioutil.TempFile("https://shop2go.cloud/api", "*."+handler.Filename)
+		reader := bufio.NewReader(file)
+		content, err := ioutil.ReadAll(reader)
+
+		if err != nil {
+			fmt.Fprint(w, err)
+		}
+
+		encoded := base64.StdEncoding.EncodeToString(content)
+
+		data := `
+		<img src="data:image/png;base64,` + encoded + `" />
+		`
+
+		fmt.Fprint(w, data)
+
+		/* tempFile, err := ioutil.TempFile("https://shop2go.cloud/api", "*."+handler.Filename)
 		if err != nil {
 			fmt.Fprint(w, err)
 		}
@@ -80,7 +99,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 		time.Sleep(5e9)
 
-		tempFile.Close()
+		tempFile.Close() */
 
 		/* // Create a global App var to hold app id and secret.
 		var globalApp = fb.New("251435286506299", os.Getenv("FBAPP_SECRET"))
