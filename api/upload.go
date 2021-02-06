@@ -3,7 +3,7 @@ package handler
 import (
 	//"encoding/json"
 	"fmt"
-	//"os"
+	"os"
 
 	//fb "github.com/huandu/facebook"
 
@@ -59,7 +59,15 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "File Size: %+v\n", handler.Size)
 		fmt.Fprintf(w, "MIME Header: %+v\n", handler.Header)
 
-		tempFile, err := ioutil.TempFile("", "*."+handler.Filename)
+		path, err := os.Getwd()
+
+		if err != nil {
+			fmt.Fprint(w, err)
+		}
+
+		fmt.Fprint(w, path)
+
+		tempFile, err := ioutil.TempFile(path, "*."+handler.Filename)
 		if err != nil {
 			fmt.Fprint(w, err)
 		}
