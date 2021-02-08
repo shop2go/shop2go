@@ -49,7 +49,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	const photoData = new Blob([fileReader.result], {type: 'image/png'});
 	const formData = new FormData();
 
-	formData.append('access_token', "` + os.Getenv("FB_TOKEN") + `);
+	formData.append('access_token', '` + os.Getenv("FB_TOKEN") + `');
 	formData.append('source', photoData);
 	formData.append('message', 'some status message');
 
