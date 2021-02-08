@@ -5,7 +5,7 @@ import (
 	//"encoding/base64"
 	//"encoding/json"
 	//"fmt"
-	//"os"
+	"os"
 
 	//fb "github.com/huandu/facebook"
 
@@ -51,7 +51,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	const photoData = new Blob([fileReader.result], {type: 'image/png'});
 	const formData = new FormData();
 
-	formData.append('access_token', "EAADkrdbvqzsBAIBYjnIZAiZBaXUQ84ZALYpuAhk5lBc44pKQC7YZBvSSvoB6RUCwkurEk0yxDI6895kT9yEtAF7BFZCZAvYECNys5SASkC7zB2pIH0NGQalBrwvmC5ZAUgOuIkdwZBKRqHM2VZB0zEG1ZCkqMEyzr3xcZChMlCGlWLb0VrwDTkkoXdlZBZAdKG5PrrMEZD");
+	formData.append('access_token', "` + os.Getenv("FB_TOKEN") + `);
 	formData.append('source', photoData);
 	formData.append('message', 'some status message');
 
