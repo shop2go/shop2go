@@ -9,8 +9,8 @@ import (
 
 	fb "github.com/huandu/facebook"
 
-	"golang.org/x/oauth2"
-	oauth2fb "golang.org/x/oauth2/facebook"
+	/* 	"golang.org/x/oauth2"
+	   	oauth2fb "golang.org/x/oauth2/facebook" */
 	"io/ioutil"
 	"net/http"
 	"strconv"
