@@ -37,9 +37,15 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	  action="https://shop2go.cloud/api/img"
       method="POST"
     >
-      <input type="file" name="filer" />
+      <input type="file" id="path" name="filer" />
       <input type="submit" value="upload" />
     </form>
+
+	<script>
+  var x = document.getElementById("path").value;
+  console.log(x)
+
+</script>
 
   </body>
 </html>
