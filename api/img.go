@@ -92,6 +92,11 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 		  </head>
 		  <body>
+
+		  <script>
+			var x = document.getElementById("path").value;
+			console.log(x)
+		  </script>
 		  ` + strconv.Itoa(len(encoded)) + `
 		  <br>
 		  <img id=image src="data:image/png;base64,` + encoded + `" />
