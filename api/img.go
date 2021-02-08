@@ -111,7 +111,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 		// Use OAuth2 client with session.
 		session := &fb.Session{
-			Version:    "v2.4",
+			Version:    "v9.0",
 			HttpClient: client,
 		}
 
