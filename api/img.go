@@ -37,7 +37,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
       action="https://shop2go.cloud/api/img"
       method="POST"
     >
-      <input type="file" name="filer" />
+      <input id="img2 type="file" name="filer" />
       <input type="submit" value="upload" />
     </form>
 
@@ -45,7 +45,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	<script>
 	const fileReader = new FileReader();
-	const file = document.getElementById('filer').files[0];
+	const file = document.getElementById('img').files[0];
 
 	fileReader.onloadend = async () => {
 	const photoData = new Blob([fileReader.result], {type: 'image/png'});
