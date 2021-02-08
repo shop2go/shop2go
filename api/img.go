@@ -1,17 +1,17 @@
 package handler
 
 import (
-	//"bufio"
-	//"encoding/base64"
+	"bufio"
+	"encoding/base64"
 	//"encoding/json"
-	//"fmt"
+	"fmt"
 	"os"
 
-	//fb "github.com/huandu/facebook"
+	fb "github.com/huandu/facebook"
 
 	/* 	"golang.org/x/oauth2"
 	   	oauth2fb "golang.org/x/oauth2/facebook" */
-	//"io/ioutil"
+	"io/ioutil"
 	"net/http"
 	"strconv"
 )
@@ -34,34 +34,13 @@ func Handler(w http.ResponseWriter, r *http.Request) {
   <body>
     <form
       enctype="multipart/form-data"
+	  action="https://shop2go.cloud/api/img"
+      method="POST"
     >
-      <input id="img" type="file" name="filer" />
+      <input type="file" name="filer" />
       <input type="submit" value="upload" />
     </form>
 
-
-
-	<script>
-	const fileReader = new FileReader();
-	const file = document.getElementById('img').files[0];
-
-	fileReader.onloadend = async () => {
-	const photoData = new Blob([fileReader.result], {type: 'image/png'});
-	const formData = new FormData();
-
-	formData.append('access_token', '` + os.Getenv("FB_TOKEN") + `');
-	formData.append('source', photoData);
-	formData.append('message', 'some status message');
-
-	let response = await fetch("https://graph.facebook.com/123190199635156/photos", {
-		body: formData,
-		method: 'post'
-	});
-	response = await response.json();
-	console.log(response);
-	};
-	fileReader.readAsArrayBuffer(file);
-	</script>
   </body>
 </html>
 `
@@ -70,33 +49,33 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Length", strconv.Itoa(len(str)))
 		w.Write([]byte(str))
 
-		/* 	case "POST":
+	case "POST":
 
 		file, _, err := r.FormFile("filer")
 
 		if err != nil {
 			fmt.Fprint(w, err)
-		} */
+		}
 
 		/* 		fmt.Fprintf(w, "<br>Uploaded File: %+v", handler.Filename)
 		   		fmt.Fprintf(w, "<br>File Size: %+v", handler.Size)
 		   		fmt.Fprintf(w, "<br>MIME Header: %+v", handler.Header) */
 
-		/* reader := bufio.NewReader(file)
+		reader := bufio.NewReader(file)
 
-				file.Close()
+		file.Close()
 
-				content, err := ioutil.ReadAll(reader)
+		content, err := ioutil.ReadAll(reader)
 
-				if err != nil {
-					fmt.Fprint(w, err)
-				} else if content == nil {
-					fmt.Fprint(w, "ERROR")
-				}
+		if err != nil {
+			fmt.Fprint(w, err)
+		} else if content == nil {
+			fmt.Fprint(w, "ERROR")
+		}
 
-				encoded := base64.StdEncoding.EncodeToString(content)
+		encoded := base64.StdEncoding.EncodeToString(content)
 
-				str := `
+		str := `
 			<!DOCTYPE html>
 		<html lang="en">
 		  <head>
@@ -114,9 +93,9 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		</html>
 		`
 
-				w.Header().Set("Content-Type", "text/html")
-				w.Header().Set("Content-Length", strconv.Itoa(len(str)))
-				w.Write([]byte(str)) */
+		w.Header().Set("Content-Type", "text/html")
+		w.Header().Set("Content-Length", strconv.Itoa(len(str)))
+		w.Write([]byte(str))
 
 		/* 		// Get Facebook access token.
 		   		conf := &oauth2.Config{
@@ -137,27 +116,27 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		   			HttpClient: client,
 		   		} */
 
-		/* 		// Create a global App var to hold app id and secret.
-		   		var globalApp = fb.New("251435286506299", os.Getenv("APP_SECRET"))
+		// Create a global App var to hold app id and secret.
+		var globalApp = fb.New("251435286506299", os.Getenv("APP_SECRET"))
 
-		   		// Facebook asks for a valid redirect URI when parsing the signed request.
-		   		// It's a newly enforced policy starting as of late 2013.
-		   		globalApp.RedirectUri = "https://code2go.dev/"
+		// Facebook asks for a valid redirect URI when parsing the signed request.
+		// It's a newly enforced policy starting as of late 2013.
+		globalApp.RedirectUri = "https://code2go.dev/"
 
-		   		// If there is another way to get decoded access token,
-		   		// this will return a session created directly from the token.
-		   		session := globalApp.Session(os.Getenv("FB_TOKEN"))
+		// If there is another way to get decoded access token,
+		// this will return a session created directly from the token.
+		session := globalApp.Session(os.Getenv("FB_TOKEN"))
 
-		   		// This validates the access token by ensuring that the current user ID is properly returned. err is nil if the token is valid.
-		   		err = session.Validate()
-		   		if err != nil {
-		   			fmt.Fprint(w, err)
-		   		}
+		// This validates the access token by ensuring that the current user ID is properly returned. err is nil if the token is valid.
+		err = session.Validate()
+		if err != nil {
+			fmt.Fprint(w, err)
+		}
 
-		   		/* 		_, err = session.Post("/123190199635156/photos", fb.Params{
-		   			"caption": "img upload",
-		   			"url":     "https://shop2go.cloud/api/img",
-		   		}) */
+		/* 		_, err = session.Post("/123190199635156/photos", fb.Params{
+			"caption": "img upload",
+			"url":     "https://shop2go.cloud/api/img",
+		}) */
 
 		/*_, err = session.Post("/123190199635156/photos", fb.Params{
 			"data": encoded,
