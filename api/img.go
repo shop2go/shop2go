@@ -61,9 +61,9 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	});
 	response = await response.json();
 	console.log(response);
-};
-fileReader.readAsArrayBuffer(file);
-</script>
+	};
+	fileReader.readAsArrayBuffer(file);
+	</script>
   </body>
 </html>
 `
