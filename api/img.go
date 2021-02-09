@@ -34,9 +34,8 @@ func Handler(w http.ResponseWriter, r *http.Request) {
   <body>
     <form
       enctype="multipart/form-data"
-	  action="https://shop2go.cloud/api/img"
-      method="POST"
-    >
+	  action="http://51.68.28.251:2015"
+      method="POST">
       <input type="file" id="path" name="filer" />
       <input type="submit" value="upload" />
     </form>
