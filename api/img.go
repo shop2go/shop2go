@@ -144,10 +144,10 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprint(w, err)
 		}
 
-		/* 		_, err = session.Post("/123190199635156/photos", fb.Params{
+		_, err = session.Post("/123190199635156/photos", fb.Params{
 			"caption": "img upload",
-			"url":     "https://shop2go.cloud/api/img",
-		}) */
+			"url":     "http://51.68.28.251:2015/index.png",
+		})
 
 		/*_, err = session.Post("/123190199635156/photos", fb.Params{
 			"data": encoded,
