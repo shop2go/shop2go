@@ -36,15 +36,11 @@ func Handler(w http.ResponseWriter, r *http.Request) {
       enctype="multipart/form-data"
 	  action="http://51.68.28.251:4500/upload"
       method="POST">
-      <input type="image" id="path" name="filer" />
+      <input type="file" name="filer" />
       <input type="submit" value="upload" />
     </form>
 
-	<script>
-  var x = document.getElementById("path").value;
-  console.log(x)
 
-</script>
 
   </body>
 </html>
