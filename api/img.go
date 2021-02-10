@@ -34,7 +34,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
   <body>
     <form
       enctype="multipart/form-data"
-	  action="http://51.68.28.251:2015/"
+	  action="http://51.68.28.251:4500/upload"
       method="POST">
       <input type="image" id="path" name="filer" />
       <input type="submit" value="upload" />
