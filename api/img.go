@@ -36,7 +36,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
       enctype="multipart/form-data"
 	  action="http://51.68.28.251:8080"
       method="POST">
-      <input type="file" name="filer" />
+      <input type="file" name="file" />
       <input type="submit" value="upload" />
     </form>
 
