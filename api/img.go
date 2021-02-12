@@ -34,13 +34,11 @@ func Handler(w http.ResponseWriter, r *http.Request) {
   <body>
     <form
       enctype="multipart/form-data"
-	  action="http://51.68.28.251:4500/upload"
+	  action="http://51.68.28.251:8080"
       method="POST">
       <input type="file" name="filer" />
       <input type="submit" value="upload" />
     </form>
-
-
 
   </body>
 </html>
@@ -55,6 +53,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		file, _, err := r.FormFile("filer")
 
 		if err != nil {
+
 			fmt.Fprint(w, err)
 		}
 
