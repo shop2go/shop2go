@@ -1,17 +1,17 @@
 package handler
 
 import (
-	"bufio"
+	/* "bufio"
 	"encoding/base64"
 	//"encoding/json"
 	"fmt"
-	"os"
+	"os" */
 
-	fb "github.com/huandu/facebook"
+	//fb "github.com/huandu/facebook"
 
 	/* 	"golang.org/x/oauth2"
 	   	oauth2fb "golang.org/x/oauth2/facebook" */
-	"io/ioutil"
+	//"io/ioutil"
 	"net/http"
 	"strconv"
 )
