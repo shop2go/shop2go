@@ -48,7 +48,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Length", strconv.Itoa(len(str)))
 		w.Write([]byte(str))
 
-	case "POST":
+		/* case "POST":
 
 		file, _, err := r.FormFile("filer")
 
@@ -59,7 +59,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 		/* 		fmt.Fprintf(w, "<br>Uploaded File: %+v", handler.Filename)
 		   		fmt.Fprintf(w, "<br>File Size: %+v", handler.Size)
-		   		fmt.Fprintf(w, "<br>MIME Header: %+v", handler.Header) */
+		   		fmt.Fprintf(w, "<br>MIME Header: %+v", handler.Header)
 
 		reader := bufio.NewReader(file)
 
@@ -102,7 +102,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Length", strconv.Itoa(len(str)))
 		w.Write([]byte(str))
 
-		/* 		// Get Facebook access token.
+		 		// Get Facebook access token.
 		   		conf := &oauth2.Config{
 		   			ClientID:     "251435286506299",
 		   			ClientSecret: os.Getenv("APP_SECRET"),
@@ -119,7 +119,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		   		session := &fb.Session{
 		   			Version:    "v9.0",
 		   			HttpClient: client,
-		   		} */
+		   		}
 
 		// Create a global App var to hold app id and secret.
 		var globalApp = fb.New("251435286506299", os.Getenv("APP_SECRET"))
@@ -142,7 +142,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 			"caption": "img upload",
 			"url":     "http://51.68.28.251:2015/index.png",
 		})
-
+		*/
 		/*_, err = session.Post("/123190199635156/photos", fb.Params{
 			"data": encoded,
 		})
